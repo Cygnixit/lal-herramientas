@@ -1,6 +1,6 @@
 # Luna Aegis Labs · Herramientas gratuitas
 
-Repositorio canónico previsto: `Cygnixit/lal-herramientas`. La existencia de este árbol **local** no demuestra que ya se haya creado o publicado un repositorio remoto.
+Repositorio público y fuente canónica de código: **`Cygnixit/lal-herramientas`**. La distribución mediante Pages y Release se verifica por separado en `ESTADO.md`.
 
 ## Catálogo
 
@@ -26,4 +26,4 @@ Código nuevo: MIT, ver [LICENSE](LICENSE). Interfaz con CSS y JavaScript están
 
 ## Publicación
 
-Se necesita un repositorio público bajo `Cygnixit` y permisos de administración para Pages y Release. Publicar únicamente versiones con pruebas aplicables comprobadas, hash SHA-256 del HTML offline y un archivo descargable, sin publicar `video-factory` ni su contenido privado. Los datos del espectador nunca se almacenan en el repositorio.
+El repositorio público ya existe; la publicación con GitHub Pages y Release requiere configuración y verificación independientes. Publicar únicamente versiones con pruebas aplicables comprobadas, hash SHA-256 del HTML offline y un archivo descargable, sin publicar `video-factory` ni su contenido privado. Los datos del espectador nunca se almacenan en el repositorio.
