@@ -46,3 +46,11 @@ Esta publicación NO aprueba ni publica el video LAL-T1-E01.
 Rama: `herramientas/aes-confirmaciones-v0.1.1`. Base de main: `db199dce1b0e0ab43879ff91563eb3e5fa4b8dff`.
 Nueva UX de confirmación: HTML autónomo sin confirmaciones nativas de JavaScript (el selector de archivos del sistema no se cambia). **20 pruebas PASS** locales en Chromium/Debian + reimportación del JSON original aportado por Jorge 8/8 intacto. Ver [pruebas de candidata](tests/RESULTADOS-v0.1.1.md). HTML SHA-256 `d9a2cd3fdfa09b49e1591fcaeb4f1006973432932dc124d8d3042163c61abaf0`; ZIP SHA-256 `4b1594144d7eccb4b245b339226535f9dbcd17223c00824ca0adc53b8f1702ea`.
 **No existe Release 0.1.1 ni despliegue desde esta rama; main y Pages no alterados.** T02 apertura file:// real y revisión de Jorge pendientes.
+
+## Veredicto de prueba humana — 2026-10-25
+
+Jorge confirmó en el chat tras descargar y probar la candidata 0.1.1: **«Ya hice las pruebas y todo funcionó bien.»** Se registra **UAT_FUNCIONAL_APROBADA_SEGÚN_REPORTE_DE_JORGE** para los diálogos propios (Nueva hoja, Cancelar/Escape, recuperación JSON y flujo de uso solicitado). Es una **confirmación humana declarada**, no evidencia capturada por un runner ni un informe detallado de compatibilidad. No se deduce que todos los navegadores, privacidad o la desconexión completa de Internet hayan sido comprobados.
+
+La ejecución automatizada previa de esta candidata conserva **20/20 PASS** sobre el HTML exacto del commit de código `12e30ccfe5cb7541ac2219ccd2c9c0ce714b2e1f`; el archivo de producto NO se modificó al registrar este veredicto. Los gates externos T02 de apertura directa offline con desconexión explícita y T09 de Release pública con descarga/hash verificados **siguen sin cierre documental**.
+
+**Decisión:** candidata 0.1.1 APTA PARA PROPONER INTEGRACIÓN, aún **NO INTEGRADA ni PUBLICADA**. `main` y Pages permanecen en 0.1.0; crear Release, desplegar e incorporar 0.1.1 requiere decisión de publicación posterior de Jorge. El corto V01 no recibe herramienta.
