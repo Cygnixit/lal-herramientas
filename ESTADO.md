@@ -40,3 +40,9 @@ Consultar tests/RESULTADOS.md para pasos y límites.
 5. Verificar descarga anónima y SHA-256 obtenido; sólo entonces marcar PUBLISHED y actualizar exclusivamente colaboracion/herramientas/ de Video Factory.
 
 Esta publicación NO aprueba ni publica el video LAL-T1-E01.
+
+## Candidata 0.1.1 en rama aislada — 2026-10-24
+
+Rama: `herramientas/aes-confirmaciones-v0.1.1`. Base de main: `db199dce1b0e0ab43879ff91563eb3e5fa4b8dff`.
+Nueva UX de confirmación: HTML autónomo sin confirmaciones nativas de JavaScript (el selector de archivos del sistema no se cambia). **20 pruebas PASS** locales en Chromium/Debian + reimportación del JSON original aportado por Jorge 8/8 intacto. Ver [pruebas de candidata](tests/RESULTADOS-v0.1.1.md). HTML SHA-256 `d9a2cd3fdfa09b49e1591fcaeb4f1006973432932dc124d8d3042163c61abaf0`; ZIP SHA-256 `4b1594144d7eccb4b245b339226535f9dbcd17223c00824ca0adc53b8f1702ea`.
+**No existe Release 0.1.1 ni despliegue desde esta rama; main y Pages no alterados.** T02 apertura file:// real y revisión de Jorge pendientes.

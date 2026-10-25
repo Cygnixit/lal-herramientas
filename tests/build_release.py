@@ -7,8 +7,8 @@ root = Path(__file__).resolve().parents[1]
 source = root / 'herramientas' / 'aegis-exposure-sheet' / 'index.html'
 destination = root / 'dist'
 destination.mkdir(exist_ok=True)
-html_name = 'Aegis-Exposure-Sheet-v0.1.0.html'
-zip_name = 'Aegis-Exposure-Sheet-v0.1.0.zip'
+html_name = 'Aegis-Exposure-Sheet-v0.1.1.html'
+zip_name = 'Aegis-Exposure-Sheet-v0.1.1.zip'
 html = source.read_bytes()
 license_text = (root / 'LICENSE').read_bytes()
 (destination / html_name).write_bytes(html)

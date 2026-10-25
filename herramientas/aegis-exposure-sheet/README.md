@@ -1,4 +1,4 @@
-# Aegis Exposure Sheet 0.1.0
+# Aegis Exposure Sheet 0.1.1
 
 **Episodio:** LAL-T1-E01, Atlas v0.2.3 — mapa de exposición externa (DNS, correo, CT, TLS, HTTP e inventario). **Licencia:** MIT.
 
@@ -29,3 +29,7 @@ JSON versión de esquema 1.0, máximo 250 observaciones y archivo de importació
 Consulta [evidencias](../../tests/RESULTADOS.md) y el estado actual en [ESTADO](../../ESTADO.md). La versión del HTML, su SHA-256 y pruebas son independientes del estado de publicación del video.
 
 [Código](https://github.com/Cygnixit/lal-herramientas/tree/main/herramientas/aegis-exposure-sheet) · [Comunicar un problema](https://github.com/Cygnixit/lal-herramientas/issues) — no pegar datos internos en Issues.
+
+## Confirmaciones personalizadas · candidata 0.1.1
+
+Nueva hoja, recuperación JSON válida, exportación CSV, reemplazo por el ejemplo y eliminación de registros usan un diálogo propio, sin `window.confirm()`. Cancelar o pulsar Escape conserva los datos y el estado anterior. El selector del archivo JSON sigue siendo nativo por seguridad. Se conserva `schemaVersion: "1.0"`; el JSON exportado en 0.1.0 puede reimportarse. **No es una Release ni un despliegue a Pages mientras siga en esta rama.**
