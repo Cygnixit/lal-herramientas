@@ -4,52 +4,46 @@
 
 | Dimensión | Veredicto |
 |---|---|
-| Autorización | **APPROVED** — Jorge autorizó expresamente integración y distribución de 0.1.1 el 2026-10-28 |
-| Integración | **COMPLETE** — [PR #1](https://github.com/Cygnixit/lal-herramientas/pull/1) fusionada con `main` |
-| Validación funcional | **PASS** — 20/20 pruebas automatizadas, JSON 0.1.0 compatible (8/8), UAT positiva reportada por Jorge |
-| T02 offline | **PASS en Brave** — 6/6 operaciones con Internet desconectado y URL `file:///`, reportado por Jorge |
-| Distribución en repositorio | **COMPLETE** — HTML y ZIP + LICENSE, sumas SHA-256, catálogo enlazado a archivos versionados |
-| GitHub Pages | **DEPLOY AUTOMÁTICO** — GitHub Actions debe indicar SUCCESS en la revisión final; acceso anónimo aún pendiente de validación |
-| GitHub Release | **PENDING** — sin tag/Release con los tres adjuntos (la entrega en Pages/repositorio no equivale a una Release) |
-| T09 distribución pública | **PARTIAL** — faltan acceso/descargas anónimas, cotejo SHA externo y GitHub Release |
-| Video largo y corto | **NO PUBLICADOS** — la distribución de la herramienta es un gate distinto del editorial |
+| Autorización | APPROVED — Jorge autorizó la distribución pública de 0.1.1 |
+| Integración | PASS — [PR #1](https://github.com/Cygnixit/lal-herramientas/pull/1) fusionada en `main` |
+| Pruebas funcionales | PASS — 20/20 automatizadas, JSON 0.1.0 reimportado 8/8 y prueba de Brave satisfactoria |
+| T02: uso offline | PASS — 6/6 criterios en Brave con Internet desconectado y URL `file:///`, según Jorge |
+| GitHub Pages | PASS — [run 40730741561](https://github.com/Cygnixit/lal-herramientas/actions/runs/40730741561) final `completed/success`; Jorge verificó interfaz del catálogo y descarga ZIP |
+| GitHub Release | PASS — [Aegis Exposure Sheet v0.1.1](https://github.com/Cygnixit/lal-herramientas/releases/tag/aegis-exposure-sheet-v0.1.1), ID `426991548`, pública y no preliminar |
+| T09: distribución pública | **APROBADA CON OBSERVACIÓN** — descarga ZIP confirmada por Jorge en ventana privada de Brave, hashes de assets reportados por GitHub correctos |
+| Videos | SIN PUBLICAR — ni el largo LAL-T1-E01 Atlas v0.2.3 ni el corto V01 v0.1.3 avanzan de estado por esta publicación |
 
-## Fuente canónica y versión
+## Distribución
 
-Repositorio de código fuente único: [Cygnixit/lal-herramientas](https://github.com/Cygnixit/lal-herramientas). Archivo de aplicación: [index.html](herramientas/aegis-exposure-sheet/index.html). Fuente HTML de **0.1.1** es idéntica a la probada (Git blob SHA `84e256511697d78c9158152d7462084c283c5f71`). Se integró a `main` mediante [PR #1](https://github.com/Cygnixit/lal-herramientas/pull/1), commit de integración `dcfaca7f47bbd3b35b2c5aee21b15393c628fae3`. No copiar código editable a Video Factory.
+- [Usar herramienta online](https://cygnixit.github.io/lal-herramientas/herramientas/aegis-exposure-sheet/)
+- [Catálogo público](https://cygnixit.github.io/lal-herramientas/)
+- [GitHub Release oficial](https://github.com/Cygnixit/lal-herramientas/releases/tag/aegis-exposure-sheet-v0.1.1)
+- [Descargar ZIP offline + licencia MIT](https://github.com/Cygnixit/lal-herramientas/releases/download/aegis-exposure-sheet-v0.1.1/Aegis-Exposure-Sheet-v0.1.1.zip)
+- [Descargar HTML autónomo](https://github.com/Cygnixit/lal-herramientas/releases/download/aegis-exposure-sheet-v0.1.1/Aegis-Exposure-Sheet-v0.1.1.html)
+- [Sumas SHA-256](https://github.com/Cygnixit/lal-herramientas/releases/download/aegis-exposure-sheet-v0.1.1/SHA256SUMS-v0.1.1.txt)
 
-Versión online esperada: https://cygnixit.github.io/lal-herramientas/herramientas/aegis-exposure-sheet/
+El **catálogo ofrece solamente dos rutas principales**: «Abrir herramienta» y «ZIP + licencia». Los enlaces a Instrucciones y Ver SHA-256 permanecen auxiliares. El archivo HTML individual se conserva como adjunto técnico de la Release, no como botón redundante.
 
-Descargas versionadas servidas desde el repositorio y por Pages si despliega correctamente:
+## Evidencias y hashes
 
-- [HTML autónomo v0.1.1](dist/Aegis-Exposure-Sheet-v0.1.1.html) y [versión Pages](https://cygnixit.github.io/lal-herramientas/dist/Aegis-Exposure-Sheet-v0.1.1.html).
-- [ZIP v0.1.1 con LICENSE MIT](dist/Aegis-Exposure-Sheet-v0.1.1.zip) y [versión Pages](https://cygnixit.github.io/lal-herramientas/dist/Aegis-Exposure-Sheet-v0.1.1.zip).
-- [SHA256SUMS-v0.1.1.txt](dist/SHA256SUMS-v0.1.1.txt). El archivo `dist/SHA256SUMS.txt` apunta a la versión actual 0.1.1.
+- Fuente canónica de la aplicación: [herramientas/aegis-exposure-sheet/index.html](herramientas/aegis-exposure-sheet/index.html), Git blob `84e256511697d78c9158152d7462084c283c5f71`.
+- HTML (29,737 B), SHA-256: `d9a2cd3fdfa09b49e1591fcaeb4f1006973432932dc124d8d3042163c61abaf0`.
+- ZIP + licencia MIT (31,069 B), SHA-256: `472e3bdb2e7ec0ea97e9a357b2a9450edcf1d4c315ba930a33b37b2e26c11133`.
+- SHA256SUMS-v0.1.1.txt (197 B), SHA-256 del adjunto: `1b95d36175f18729ef9344621f387907c7c4bced5b8812d21c2ba543d48bcc9b`.
+- GitHub API confirma `draft=false`, `prerelease=false`, tres assets `state=uploaded`, digests SHA256 HTML/ZIP idénticos a los anteriores. Tag `aegis-exposure-sheet-v0.1.1` apunta al commit `7313b7455e861400b1c5c0881710c5720fa5a9da`.
+- Jorge ejecutó `certutil -hashfile` sobre el ZIP descargado de Pages y confirmó coincidencia exacta.
+- Jorge confirmó además: «El ZIP se descargó correctamente desde esa ventana privada», tras seguir la prueba de descarga desde los Assets de la Release sin iniciar sesión.
 
-```text
-d9a2cd3fdfa09b49e1591fcaeb4f1006973432932dc124d8d3042163c61abaf0  Aegis-Exposure-Sheet-v0.1.1.html
-472e3bdb2e7ec0ea97e9a357b2a9450edcf1d4c315ba930a33b37b2e26c11133  Aegis-Exposure-Sheet-v0.1.1.zip
-```
+**Observación de auditoría:** no se repitió `certutil` sobre la copia nueva descargada desde la Release en modo privado. Eso no invalida la observación de acceso anónimo ni el digest que proporciona GitHub, pero no debe describirse como un segundo hash calculado localmente. T09 se cierra **aprobado con observación**, no como auditoría de seguridad completa.
 
-El ZIP contiene únicamente HTML 0.1.1 y licencia MIT, sin dependencias; usa ZIP_STORED con metadatos fijos, generable mediante `python tests/build_release.py`. **Archivo ZIP anterior comprimido con hash `4b159414...` sustituido en distribución**. Se comprobó `ZipFile.testzip()` y SHA-256 del HTML extraído. El ZIP almacenado Git blob `4a6583210c358a9a169fe1d635a220d30e12624e` coincide con la generación local.
+## Límites, seguridad y editorial
 
-## Evidencia y alcance
+La herramienta documenta manualmente señales de DNS, correo, CT, TLS, HTTP e inventario autorizado; **no escanea ni consulta DNS/CT/TLS/HTTP**, no detecta CVE ni diagnostica vulnerabilidades. El trabajo se conserva mediante exportación JSON; cerrar sin exportar pierde cambios. Los archivos JSON/CSV pueden contener información corporativa sensible. La mitigación de fórmulas CSV tiene evidencia limitada de LibreOffice, no de todos los lectores. El sistema de la herramienta no utiliza backend ni analítica propia, aunque GitHub Pages puede registrar visitas HTTP. Sólo usar con autorización.
 
-- [Pruebas de regresión 0.1.1](tests/RESULTADOS-v0.1.1.md): **20/20 PASS** (Chromium/Playwright, Linux Debian), diálogos propios, cancelar/Escape sin borrar datos, filtros, CSV limitado y JSON seguro.
-- UAT humana (2026-10-25): Jorge reportó correctamente su prueba en Brave.
-- T02 humana (2026-10-28): Jorge reportó **6/6 PASS** al abrir HTML local vía `file:///`, desconectar Internet, cargar 8 registros, exportar JSON, nueva hoja (0), importar JSON (8) y cancelar hoja nueva (8).
-- Verificación adicional 2026-10-28: smoke Chromium offline mediante `page.set_content`, ejemplo=8, cancelar mantiene=8, confirmar nueva=0, **0 solicitudes de red**.
-- Sin promesa de compatibilidad completa con Firefox/Safari/Edge ni auditoría de accesibilidad instrumentada. CSV sólo probado de forma limitada en LibreOffice; requiere cautela en otros programas.
+La aprobación de la herramienta **no publica ni aprueba el video largo Atlas**. El corto vertical V01 no incorpora herramienta ni descarga directa; según la [regla editorial de Video Factory](https://github.com/Cygnixit/video-factory/blob/main/colaboracion/cortos-y-herramientas.md), podrá remitir al video largo cuando se publique. El cierre editorial requiere aprobación de Jorge por separado.
 
-El recurso **no escanea**, no hace consultas DNS/CT/TLS/HTTP ni diagnostica CVE o intrusiones; sólo ayuda a documentar evidencia manual de activos propios o autorizados. No transmite formularios a un backend, ni utiliza rastreo de producto, pero GitHub Pages puede registrar accesos HTTP. Los datos se guardan sólo por exportación JSON del usuario; cerrar sin guardar pierde cambios. Archivos JSON/CSV pueden contener información corporativa.
+## Operación y continuidad
 
-## Próximos gates
+**DAMVE:** D: autorización 2026-10-28. A: Jorge probó Brave, GitHub realizó despliegue y publicó Release. M: integridad del producto, uso online/offline, descarga anónima y hashes. V: funcional y T02 PASS, T09 APROBADA CON OBSERVACIÓN. E: este archivo y los [checkpoints privados de Video Factory](https://github.com/Cygnixit/video-factory/tree/main/colaboracion/herramientas).
 
-1. Obtener **SUCCESS** de Pages para el commit final y validar navegación anónima de catálogo, HTML online y los enlaces de descarga (fuera de sesión GitHub). El éxito del build por sí solo no acredita las descargas.
-2. Descargar HTML y ZIP sin sesión desde las URLs publicadas y verificar SHA-256 contra los dos hashes anteriores.
-3. Crear la **GitHub Release oficial `aegis-exposure-sheet-v0.1.1`** con los tres assets (HTML, ZIP, `SHA256SUMS-v0.1.1.txt`). El conector GitHub instalado no permite crear Releases ni adjuntar assets; operación separada mediante interfaz GitHub o herramienta autorizada.
-4. Registrar T09 **PASS** y entonces comunicar al Canal los enlaces definitivos. No adelantar anuncios ni publicar/modificar el episodio largo Atlas ni el corto V01 por aprobar esta herramienta. El corto sólo puede remitir al largo, sin herramienta propia.
-
-## DAMVE
-
-**D:** autorización de Jorge del 2026-10-28. **A:** integración en GitHub, revisión y empaquetado sin coste. **M:** HTML 0.1.1 canónico, uso online/descarga, verificación hashes. **V:** funcional T02 PASS; distribución T09 PARCIAL hasta acceso y Release confirmados. **E:** este archivo + checkpoint de Video Factory `colaboracion/herramientas/`.
+**Siguiente acción concreta:** entregar al equipo editorial del canal el paquete de enlaces oficial y textos de CTA para el **video largo**, respetando los gates del episodio; no producir nueva versión ni publicar videos sin decisión expresa.
