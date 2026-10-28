@@ -54,3 +54,19 @@ Jorge confirmó en el chat tras descargar y probar la candidata 0.1.1: **«Ya hi
 La ejecución automatizada previa de esta candidata conserva **20/20 PASS** sobre el HTML exacto del commit de código `12e30ccfe5cb7541ac2219ccd2c9c0ce714b2e1f`; el archivo de producto NO se modificó al registrar este veredicto. Los gates externos T02 de apertura directa offline con desconexión explícita y T09 de Release pública con descarga/hash verificados **siguen sin cierre documental**.
 
 **Decisión:** candidata 0.1.1 APTA PARA PROPONER INTEGRACIÓN, aún **NO INTEGRADA ni PUBLICADA**. `main` y Pages permanecen en 0.1.0; crear Release, desplegar e incorporar 0.1.1 requiere decisión de publicación posterior de Jorge. El corto V01 no recibe herramienta.
+
+## Prueba offline T02 — 2026-10-28
+
+**VEREDICTO: APROBADA EN PRUEBA HUMANA (BRAVE, archivo local).** Jorge informó explícitamente: «Prueba offline T02 de Aegis Exposure Sheet 0.1.1: completé satisfactoriamente las seis comprobaciones en Brave con Internet desconectado. La URL comenzó con file:///.»
+
+Los seis criterios del protocolo cumplidos según el usuario fueron:
+1. Abrió el HTML local en Brave sin conexión y se mostró la interfaz, con URL `file:///`.
+2. «Cargar ejemplo ficticio» mostró 8 registros.
+3. «Guardar hoja · JSON» descargó un archivo.
+4. «Nueva hoja → Crear hoja» dejó 0 registros.
+5. «Recuperar hoja · JSON» restauró 8 registros.
+6. «Nueva hoja → Cancelar» conservó los 8 registros.
+
+**Alcance de evidencia:** reporte directo de prueba manual del usuario, no ejecución instrumentada ni cobertura general de navegadores. Complementa las 20/20 pruebas automáticas locales y el UAT funcional previo. **T02 cerrado para el navegador Brave y la versión HTML 0.1.1 probada.** No equivale a auditoría de seguridad general.
+
+**Publicación:** `main`/GitHub Pages siguen en 0.1.0. Esta aprobación **NO es autorización de merge, Release ni publicación**. T09 pendiente: integración aprobada expresamente, prueba pública anónima en Pages ya actualizada, archivos Release HTML/ZIP/SHA256, descargas y hashes comprobados. El episodio largo y corto siguen bajo sus gates editoriales independientes.
