@@ -30,6 +30,10 @@ Consulta [evidencias](../../tests/RESULTADOS.md) y el estado actual en [ESTADO](
 
 [Código](https://github.com/Cygnixit/lal-herramientas/tree/main/herramientas/aegis-exposure-sheet) · [Comunicar un problema](https://github.com/Cygnixit/lal-herramientas/issues) — no pegar datos internos en Issues.
 
-## Confirmaciones personalizadas · candidata 0.1.1
+## Confirmaciones personalizadas · 0.1.1
 
-Nueva hoja, recuperación JSON válida, exportación CSV, reemplazo por el ejemplo y eliminación de registros usan un diálogo propio, sin `window.confirm()`. Cancelar o pulsar Escape conserva los datos y el estado anterior. El selector del archivo JSON sigue siendo nativo por seguridad. Se conserva `schemaVersion: "1.0"`; el JSON exportado en 0.1.0 puede reimportarse. **No es una Release ni un despliegue a Pages mientras siga en esta rama.**
+Nueva hoja, recuperación JSON válida, exportación CSV, reemplazo por el ejemplo y eliminación de registros usan un diálogo propio, sin `window.confirm()`. Cancelar o pulsar Escape conserva los datos y el estado anterior. El selector del archivo JSON sigue siendo nativo por seguridad. Se conserva `schemaVersion: "1.0"`; el JSON exportado en 0.1.0 puede reimportarse. **Integrada en main el 2026-10-28**; GitHub Release permanece como distribución adicional aún pendiente.
+
+## Archivos oficiales en el repositorio
+
+[Descargar HTML 0.1.1](../../dist/Aegis-Exposure-Sheet-v0.1.1.html) · [ZIP con licencia MIT](../../dist/Aegis-Exposure-Sheet-v0.1.1.zip) · [SHA-256](../../dist/SHA256SUMS-v0.1.1.txt). Son los archivos versionados del catálogo; la descarga externa y la GitHub Release se acreditan por separado. La prueba offline T02 fue aprobada por Jorge en Brave con Internet desconectado (seis criterios).
