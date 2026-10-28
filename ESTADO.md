@@ -40,3 +40,33 @@ Consultar tests/RESULTADOS.md para pasos y límites.
 5. Verificar descarga anónima y SHA-256 obtenido; sólo entonces marcar PUBLISHED y actualizar exclusivamente colaboracion/herramientas/ de Video Factory.
 
 Esta publicación NO aprueba ni publica el video LAL-T1-E01.
+
+## Candidata 0.1.1 en rama aislada — 2026-10-24
+
+Rama: `herramientas/aes-confirmaciones-v0.1.1`. Base de main: `db199dce1b0e0ab43879ff91563eb3e5fa4b8dff`.
+Nueva UX de confirmación: HTML autónomo sin confirmaciones nativas de JavaScript (el selector de archivos del sistema no se cambia). **20 pruebas PASS** locales en Chromium/Debian + reimportación del JSON original aportado por Jorge 8/8 intacto. Ver [pruebas de candidata](tests/RESULTADOS-v0.1.1.md). HTML SHA-256 `d9a2cd3fdfa09b49e1591fcaeb4f1006973432932dc124d8d3042163c61abaf0`; ZIP SHA-256 `4b1594144d7eccb4b245b339226535f9dbcd17223c00824ca0adc53b8f1702ea`.
+**No existe Release 0.1.1 ni despliegue desde esta rama; main y Pages no alterados.** T02 apertura file:// real y revisión de Jorge pendientes.
+
+## Veredicto de prueba humana — 2026-10-25
+
+Jorge confirmó en el chat tras descargar y probar la candidata 0.1.1: **«Ya hice las pruebas y todo funcionó bien.»** Se registra **UAT_FUNCIONAL_APROBADA_SEGÚN_REPORTE_DE_JORGE** para los diálogos propios (Nueva hoja, Cancelar/Escape, recuperación JSON y flujo de uso solicitado). Es una **confirmación humana declarada**, no evidencia capturada por un runner ni un informe detallado de compatibilidad. No se deduce que todos los navegadores, privacidad o la desconexión completa de Internet hayan sido comprobados.
+
+La ejecución automatizada previa de esta candidata conserva **20/20 PASS** sobre el HTML exacto del commit de código `12e30ccfe5cb7541ac2219ccd2c9c0ce714b2e1f`; el archivo de producto NO se modificó al registrar este veredicto. Los gates externos T02 de apertura directa offline con desconexión explícita y T09 de Release pública con descarga/hash verificados **siguen sin cierre documental**.
+
+**Decisión:** candidata 0.1.1 APTA PARA PROPONER INTEGRACIÓN, aún **NO INTEGRADA ni PUBLICADA**. `main` y Pages permanecen en 0.1.0; crear Release, desplegar e incorporar 0.1.1 requiere decisión de publicación posterior de Jorge. El corto V01 no recibe herramienta.
+
+## Prueba offline T02 — 2026-10-28
+
+**VEREDICTO: APROBADA EN PRUEBA HUMANA (BRAVE, archivo local).** Jorge informó explícitamente: «Prueba offline T02 de Aegis Exposure Sheet 0.1.1: completé satisfactoriamente las seis comprobaciones en Brave con Internet desconectado. La URL comenzó con file:///.»
+
+Los seis criterios del protocolo cumplidos según el usuario fueron:
+1. Abrió el HTML local en Brave sin conexión y se mostró la interfaz, con URL `file:///`.
+2. «Cargar ejemplo ficticio» mostró 8 registros.
+3. «Guardar hoja · JSON» descargó un archivo.
+4. «Nueva hoja → Crear hoja» dejó 0 registros.
+5. «Recuperar hoja · JSON» restauró 8 registros.
+6. «Nueva hoja → Cancelar» conservó los 8 registros.
+
+**Alcance de evidencia:** reporte directo de prueba manual del usuario, no ejecución instrumentada ni cobertura general de navegadores. Complementa las 20/20 pruebas automáticas locales y el UAT funcional previo. **T02 cerrado para el navegador Brave y la versión HTML 0.1.1 probada.** No equivale a auditoría de seguridad general.
+
+**Publicación:** `main`/GitHub Pages siguen en 0.1.0. Esta aprobación **NO es autorización de merge, Release ni publicación**. T09 pendiente: integración aprobada expresamente, prueba pública anónima en Pages ya actualizada, archivos Release HTML/ZIP/SHA256, descargas y hashes comprobados. El episodio largo y corto siguen bajo sus gates editoriales independientes.

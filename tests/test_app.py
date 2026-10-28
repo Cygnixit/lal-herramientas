@@ -5,7 +5,7 @@ import json
 from pathlib import Path
 
 import pytest
-from playwright.sync_api import sync_playwright
+from playwright.sync_api import sync_playwright, expect
 
 ROOT = Path(__file__).resolve().parents[1]
 APP = ROOT / 'herramientas' / 'aegis-exposure-sheet' / 'index.html'
@@ -25,7 +25,7 @@ def page(browser):
     ctx = browser.new_context(accept_downloads=True)
     ctx.set_offline(True)
     p = ctx.new_page()
-    p.on('dialog', lambda d: d.accept())
+    p.on('dialog', lambda d: pytest.fail('No debe aparecer un diálogo nativo: '+d.message))
     p.set_content(APP.read_text('utf-8'))
     yield p
     ctx.close()
@@ -85,9 +85,13 @@ def test_t03_json_roundtrip_accents_metadata_edit(page,tmp_path):
     exported = save_download(page, '#export-json', tmp_path)
     original = json.loads(exported.read_text('utf-8'))
     page.locator('#new').click()
-    assert page.locator('#total').inner_text()=='0'
+    assert page.locator('#confirm-dialog').is_visible()
+    page.locator('#confirm-accept').click()
+    expect(page.locator('#total')).to_have_text('0')
     page.locator('#import-json').set_input_files(str(exported))
-    page.wait_for_function("document.getElementById('total').textContent === '1'")
+    assert page.locator('#confirm-dialog').is_visible()
+    page.locator('#confirm-accept').click()
+    expect(page.locator('#total')).to_have_text('1')
     assert page.locator('#total').inner_text()=='1'
     after = page.evaluate('window.__AES_TEST__.exportData()')
     assert original == after
@@ -148,7 +152,12 @@ def test_t08_view_filters_not_exports(page,tmp_path):
 def test_csv_generated_and_formulas_prefixed(page,tmp_path):
     page.locator('#dominio').fill('empresa-ejemplo.test')
     add_entry(page,signal='=2+3',asset='-1+2',obs=' @sum(2,3)')
-    f=save_download(page,'#export-csv',tmp_path)
+    with page.expect_download() as event:
+        page.locator('#export-csv').click()
+        assert page.locator('#confirm-dialog').is_visible()
+        page.locator('#confirm-accept').click()
+    f=tmp_path/event.value.suggested_filename
+    event.value.save_as(f)
     with f.open(encoding='utf-8-sig',newline='') as fi:
         rows=list(csv.reader(fi))
     assert len(rows)==2
@@ -214,3 +223,88 @@ def test_catalog_guide_link_exists_and_selfcontained():
     assert 'herramientas/aegis-exposure-sheet/guia.html' in catalog
     assert 'LAL-T1-E01' in guide.read_text('utf-8')
     assert '<script src=' not in guide.read_text('utf-8')
+
+
+def test_custom_dialog_new_cancel_and_esc_preserve_data(page):
+    page.locator('#demo').click()
+    before=page.evaluate('window.__AES_TEST__.exportData()')
+    page.locator('#new').click()
+    assert page.locator('#confirm-title').inner_text()=='Crear una hoja nueva'
+    assert page.evaluate("document.activeElement.id === 'confirm-cancel'")
+    page.locator('#confirm-cancel').click()
+    assert not page.locator('#confirm-dialog').is_visible()
+    assert page.evaluate('window.__AES_TEST__.exportData()')==before
+    page.locator('#new').click()
+    page.keyboard.press('Escape')
+    assert not page.locator('#confirm-dialog').is_visible()
+    assert page.evaluate('window.__AES_TEST__.exportData()')==before
+
+
+def test_custom_dialog_import_cancel_and_confirm(page,tmp_path):
+    page.locator('#demo').click()
+    original=page.evaluate('window.__AES_TEST__.exportData()')
+    exported=save_download(page,'#export-json',tmp_path)
+    page.locator('#new').click();page.locator('#confirm-accept').click()
+    page.locator('#dominio').fill('otra.test')
+    add_entry(page,signal='MX',asset='otra.test',obs='sin reemplazar')
+    before=page.evaluate('window.__AES_TEST__.exportData()')
+    page.locator('#import-json').set_input_files(str(exported))
+    expect(page.locator('#confirm-title')).to_have_text('Recuperar hoja JSON')
+    assert '8 registros' in page.locator('#confirm-message').inner_text()
+    page.locator('#confirm-cancel').click()
+    assert page.evaluate('window.__AES_TEST__.exportData()')==before
+    # Repetir importación del mismo archivo después de cancelar debe funcionar.
+    page.locator('#import-json').set_input_files(str(exported))
+    page.locator('#confirm-accept').click()
+    expect(page.locator('#total')).to_have_text('8')
+    assert page.evaluate('window.__AES_TEST__.exportData()')==original
+
+
+def test_custom_dialog_csv_cancel_no_download(page):
+    page.locator('#demo').click()
+    downloads=[];page.on('download',lambda d:downloads.append(d.suggested_filename))
+    page.locator('#export-csv').click()
+    assert page.locator('#confirm-title').inner_text()=='Exportar datos en CSV'
+    page.locator('#confirm-cancel').click()
+    assert downloads==[]
+    assert page.locator('#total').inner_text()=='8'
+
+
+def test_custom_dialog_demo_overwrite_and_delete_cancel(page):
+    page.locator('#demo').click()
+    before=page.evaluate('window.__AES_TEST__.exportData()')
+    page.locator('#demo').click()
+    assert page.locator('#confirm-title').inner_text()=='Cargar ejemplo ficticio'
+    page.locator('#confirm-cancel').click()
+    assert page.evaluate('window.__AES_TEST__.exportData()')==before
+    page.locator('#rows button').nth(1).click()
+    assert page.locator('#confirm-title').inner_text()=='Eliminar registro'
+    page.locator('#confirm-cancel').click()
+    assert page.evaluate('window.__AES_TEST__.exportData()')==before
+    page.locator('#rows button').nth(1).click()
+    page.locator('#confirm-accept').click()
+    expect(page.locator('#total')).to_have_text('7')
+
+
+def test_custom_dialog_keyboard_tab_and_mobile(browser):
+    ctx=browser.new_context(viewport={'width':390,'height':844},is_mobile=True,has_touch=True)
+    page=ctx.new_page();page.set_content(APP.read_text('utf-8'))
+    page.locator('#demo').click();page.locator('#new').click()
+    assert page.locator('#confirm-dialog').is_visible()
+    assert page.evaluate("document.activeElement.id === 'confirm-cancel'")
+    assert page.evaluate('document.documentElement.scrollWidth <= window.innerWidth')
+    page.locator('#confirm-cancel').press('Tab')
+    assert page.evaluate("document.activeElement.id === 'confirm-accept'")
+    page.keyboard.press('Escape')
+    assert not page.locator('#confirm-dialog').is_visible()
+    assert page.locator('#total').inner_text()=='8'
+    ctx.close()
+
+
+def test_custom_dialog_input_safe_and_no_external_dependencies(page):
+    assert 'confirm(' not in APP.read_text('utf-8')
+    assert '<script src=' not in APP.read_text('utf-8')
+    page.locator('#demo').click()
+    page.locator('#new').click()
+    assert page.locator('#confirm-dialog').get_attribute('aria-labelledby')=='confirm-title'
+    page.locator('#confirm-cancel').click()

@@ -6,7 +6,7 @@ Repositorio público y fuente canónica de código: **`Cygnixit/lal-herramientas
 
 | Recurso | Versión | Episodio | Uso |
 |---|---|---|---|
-| [Aegis Exposure Sheet](herramientas/aegis-exposure-sheet/README.md) | 0.1.0 | LAL-T1-E01, Atlas v0.2.3 | Hoja de exposición autorizada, manual, offline |
+| [Aegis Exposure Sheet](herramientas/aegis-exposure-sheet/README.md) | 0.1.1 (candidata en rama) | LAL-T1-E01, Atlas v0.2.3 | Hoja de exposición autorizada, manual, offline |
 
 Para abrir el catálogo localmente, abre `index.html`. Para usar la hoja sin conexión, abre `herramientas/aegis-exposure-sheet/index.html` en el navegador. No requiere instalar nada ni conectarse a servicios externos.
 
@@ -27,3 +27,7 @@ Código nuevo: MIT, ver [LICENSE](LICENSE). Interfaz con CSS y JavaScript están
 ## Publicación
 
 El repositorio público ya existe; la publicación con GitHub Pages y Release requiere configuración y verificación independientes. Publicar únicamente versiones con pruebas aplicables comprobadas, hash SHA-256 del HTML offline y un archivo descargable, sin publicar `video-factory` ni su contenido privado. Los datos del espectador nunca se almacenan en el repositorio.
+
+### Candidata de interfaz 0.1.1
+
+La revisión de diálogos de 0.1.1 se encuentra en la rama `herramientas/aes-confirmaciones-v0.1.1`. `main`/Pages siguen sirviendo 0.1.0 hasta aprobación posterior y cambio controlado. No usar el HTML del catálogo de main para evaluar los nuevos diálogos.
