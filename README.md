@@ -6,11 +6,11 @@ Repositorio público y fuente canónica de código: **`Cygnixit/lal-herramientas
 
 | Recurso | Versión | Episodio | Uso |
 |---|---|---|---|
-| [Aegis Exposure Sheet](herramientas/aegis-exposure-sheet/README.md) | 0.1.1 (candidata en rama) | LAL-T1-E01, Atlas v0.2.3 | Hoja de exposición autorizada, manual, offline |
+| [Aegis Exposure Sheet](herramientas/aegis-exposure-sheet/README.md) | 0.1.1 (integrada en main) | LAL-T1-E01, Atlas v0.2.3 | Hoja de exposición autorizada, manual, offline |
 
 Para abrir el catálogo localmente, abre `index.html`. Para usar la hoja sin conexión, abre `herramientas/aegis-exposure-sheet/index.html` en el navegador. No requiere instalar nada ni conectarse a servicios externos.
 
-En caso de publicación posterior: catálogo `https://cygnixit.github.io/lal-herramientas/` y código fuente `https://github.com/Cygnixit/lal-herramientas`; **no afirmar disponibilidad hasta comprobarlos**.
+Catálogo de GitHub Pages: https://cygnixit.github.io/lal-herramientas/ (verificar acceso anónimo tras cada despliegue). Entregables versionados: [HTML 0.1.1](dist/Aegis-Exposure-Sheet-v0.1.1.html), [ZIP + licencia MIT](dist/Aegis-Exposure-Sheet-v0.1.1.zip), [SHA-256](dist/SHA256SUMS-v0.1.1.txt).
 
 ## Límites
 
@@ -28,6 +28,6 @@ Código nuevo: MIT, ver [LICENSE](LICENSE). Interfaz con CSS y JavaScript están
 
 El repositorio público ya existe; la publicación con GitHub Pages y Release requiere configuración y verificación independientes. Publicar únicamente versiones con pruebas aplicables comprobadas, hash SHA-256 del HTML offline y un archivo descargable, sin publicar `video-factory` ni su contenido privado. Los datos del espectador nunca se almacenan en el repositorio.
 
-### Candidata de interfaz 0.1.1
+### Integración autorizada 0.1.1 — 2026-10-28
 
-La revisión de diálogos de 0.1.1 se encuentra en la rama `herramientas/aes-confirmaciones-v0.1.1`. `main`/Pages siguen sirviendo 0.1.0 hasta aprobación posterior y cambio controlado. No usar el HTML del catálogo de main para evaluar los nuevos diálogos.
+Jorge autorizó distribuir la versión 0.1.1 luego de las 20 pruebas automatizadas, su UAT y el protocolo offline T02 (6/6 en Brave, Internet desconectado, `file:///`). Integración mediante [PR #1](https://github.com/Cygnixit/lal-herramientas/pull/1). La versión se ofrece como aplicación web, HTML autónomo y ZIP con LICENSE. La **GitHub Release** con assets y verificación de descargas anónimas siguen siendo comprobaciones independientes; consultar [ESTADO](ESTADO.md).
