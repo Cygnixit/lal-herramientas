@@ -34,3 +34,16 @@ El ZIP tiene timestamps y permisos constantes. El paquete **no** está adjunto a
 - CSV sólo comprobado de forma limitada en LibreOffice (no garantía universal en Excel).
 - Validar manualmente Cancelar/Escape y recuperación de JSON en Brave con esta candidata antes de aprobar merge a `main`.
 - **No modificar `main` ni publicar en Pages/Release sin autorización posterior expresa.** La candidata está aislada en rama y el sitio público 0.1.0 permanece intacto.
+
+## Actualización postintegración — 2026-10-28
+
+**Esta sección actualiza los pendientes históricos del informe de candidata.** Jorge autorizó integración y distribución de 0.1.1; [PR #1](https://github.com/Cygnixit/lal-herramientas/pull/1) fue fusionada. T02 se cerró con su reporte humano de 6/6 pruebas offline en Brave, Internet desconectado y URL `file:///`. El código HTML sometido a 20 pruebas automáticas anteriores sigue inalterado. Además, se ejecutó un smoke en Chromium offline, con ejemplo 8 registros, Cancelar sin pérdida, Crear hoja (0) y cero solicitudes de red.
+
+En la distribución versionada se conservaron los bytes del HTML; el ZIP incluye HTML y licencia MIT. Se eligió empaquetado determinista sin compresión (`ZIP_STORED`) para disponer de un paquete directamente publicable y reproducible con metadatos fijos. **Esto sustituye el ZIP de candidata con hash `4b159414...`, pero NO modifica el HTML ni los resultados funcionales.** ZIP de 31,069 bytes validado con `ZipFile.testzip()`, y HTML extraído con SHA-256 idéntico al archivo standalone. Se ofrece tanto [HTML](../dist/Aegis-Exposure-Sheet-v0.1.1.html) como [ZIP](../dist/Aegis-Exposure-Sheet-v0.1.1.zip) y [SHA-256](../dist/SHA256SUMS-v0.1.1.txt).
+
+```text
+d9a2cd3fdfa09b49e1591fcaeb4f1006973432932dc124d8d3042163c61abaf0  Aegis-Exposure-Sheet-v0.1.1.html
+472e3bdb2e7ec0ea97e9a357b2a9450edcf1d4c315ba930a33b37b2e26c11133  Aegis-Exposure-Sheet-v0.1.1.zip
+```
+
+**T09 sigue pendiente de cierre externo:** éxito de build Pages en revisión final, acceso anónimo al catálogo y descarga/hash, además de creación de GitHub Release formal. La publicación de la herramienta no publica ni aprueba el video largo o corto.
