@@ -1,7 +1,7 @@
 """Genera entregables reproducibles con Python stdlib, sin dependencias externas."""
 from hashlib import sha256
 from pathlib import Path
-from zipfile import ZIP_DEFLATED, ZipFile, ZipInfo
+from zipfile import ZIP_STORED, ZipFile, ZipInfo
 
 root = Path(__file__).resolve().parents[1]
 source = root / 'herramientas' / 'aegis-exposure-sheet' / 'index.html'
@@ -16,7 +16,7 @@ license_text = (root / 'LICENSE').read_bytes()
 
 def add_stable_member(archive: ZipFile, name: str, data: bytes) -> None:
     info = ZipInfo(name, date_time=(1980, 1, 1, 0, 0, 0))
-    info.compress_type = ZIP_DEFLATED
+    info.compress_type = ZIP_STORED
     info.external_attr = 0o644 << 16
     archive.writestr(info, data)
 
